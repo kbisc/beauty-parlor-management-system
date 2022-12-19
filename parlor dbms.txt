@@ -1,0 +1,82 @@
+//comments_table
+
+CREATE comments_table(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name varchar(255),
+	email varchar(255),
+	comment mediumtext
+);
+
+
+//customers_table
+
+CREATE TABLE customers_table (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username varchar(50) NOT NULL UNIQUE,
+    password varchar(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+//services_table
+
+CREATE TABLE services_table(
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  ServiceName varchar(200) DEFAULT NULL,
+  Cost int(10) DEFAULT NULL,
+  CreationDate timestamp NULL DEFAULT current_timestamp()
+);
+
+
+INSERT INTO services_table (`id`, `ServiceName`, `Cost`, `CreationDate`) VALUES
+(1, 'LED Facial', 6000, '2019-07-25 11:22:38'),
+(2, 'Fruit Facial', 3000, '2019-07-25 11:22:53'),
+(3, 'Charcol Facial', 4500, '2019-07-25 11:23:10'),
+(4, 'Menicure', 600, '2019-07-25 11:23:34'),
+(5, 'Pedicure', 800, '2019-07-25 11:23:47'),
+(6, 'Laser per session', 15000, '2019-07-25 11:24:01'),
+(7, 'Nail extension', 1200, '2019-07-25 11:24:19'),
+(8, 'Makeup', 1000, '2019-07-25 11:24:38'),
+(9, 'Haircut', 600, '2019-07-25 11:24:53'),
+(10, 'Hair color', 6000-12000, '2019-07-25 11:25:08'),
+(11, 'Lash Extension', 5000, '2019-07-25 11:25:35'),
+(12, 'Body Spa', 1500, '2019-08-19 13:36:27'),
+(14, 'Waxing', 300, '2019-08-21 15:45:50'),
+(15, 'Lip Coloring', 800, '2019-08-21 16:23:23'),
+(16, 'Mole Removal', 300, '2019-08-22 176:23:23');
+
+//appointments_table
+
+
+CREATE TABLE appointments_table (
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  AptNumber varchar(100) DEFAULT NULL,
+  Name varchar(125) DEFAULT NULL,
+  Email varchar(125) DEFAULT NULL,
+  PhoneNumber int(15) DEFAULT NULL,
+  AptDate varchar(125) DEFAULT NULL,
+  AptTime varchar(125) DEFAULT NULL,
+  Services varchar(125) DEFAULT NULL,
+  ApplyDate timestamp NULL DEFAULT current_timestamp(),
+  Remark varchar(250) NOT NULL,
+    cid int,
+    FOREIGN KEY(cid)REFERENCES customers_table(cid)
+ 
+  );
+
+INSERT INTO `appointments_table` (`ID`, `AptNumber`, `Name`, `Email`, `PhoneNumber`, `AptDate`, `AptTime`, `Services`, `ApplyDate`, `Remark`, `Status`) VALUES
+(1, '261064124', 'Komal', 'komal@gmail.com', 7798797897, '7/27/2021', '4:00pm', '1', '2021-07-26 04:48:25', 'Accepted', '1'),
+(2, '985645887', 'Kashish', 'Kash@gmail.com', 4654654654, '7/29/2021', '4:30pm', 'Pedicure', '2019-07-26 05:04:38', 'Rejected', '2'),
+(3, '965887988', 'Sanjeeta Jain', 'sna@gmail.com', 5646464646, '8/20/2021', '2:30pm', ' Haircut', '2021-08-19 12:35:30', 'we will wait', '1'),
+(4, '578797544', 'Anuj Kumar', 'phpgurukulofficial@gmail.com', 123456789, '8/30/2021', '1:30am', 'Browlift', '2021-08-21 16:13:13', '', ''),
+(5, '899118550', 'bb', 'bgfdh@fdfdsf.com', 4234235423, '8/27/2021', '1:30am', 'Menicure', '2021-08-21 16:14:14', '', ''),
+(6, '621107928', 'ABC', 'abc@gmail.com', 1234567890, '8/27/2021', '1:30am', 'LED Facial', '2019-08-21 16:22:25', 'Testing', '2');
+
+
+//admins_table
+
+CREATE TABLE admins_table(
+    Admin_Name varchar(100),
+    Admin_Password varchar(100)
+    );
+
+INSERT INTO admins_table(Admin_Name, Admin_Password) VALUES('barsumy', '1829');
